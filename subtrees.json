@@ -1,0 +1,12 @@
+{
+  "subtrees": [
+    {
+      "name": "question-bank-maker",
+      "remote": "quiz-helper",
+      "remote_url": "https://github.com/nep-0/quiz-helper.git",
+      "branch": "main",
+      "upstream_prefix": "skills/question-bank-maker",
+      "local_prefix": "question-bank-maker"
+    }
+  ]
+}
