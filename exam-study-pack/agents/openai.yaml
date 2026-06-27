@@ -1,0 +1,4 @@
+interface:
+  display_name: "Exam Study Pack"
+  short_description: "Build reproducible exam prep packs"
+  default_prompt: "Use $exam-study-pack to turn these course materials and past papers into a staged study pack."
