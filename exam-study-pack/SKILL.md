@@ -66,6 +66,8 @@ Include:
 - drills
 - completion test
 
+Write formulas in TeX syntax wrapped for MathJax: use `$...$` for inline formulas and `$$...$$` for displayed equations. Do this in notes, method templates, drills, and solutions so generated HTML renders the math instead of showing raw notation. Use `\lvert` and `\rvert` instead of raw `|` for absolute values, determinants, magnitudes, and vertical bars, especially inside markdown tables where `|` breaks columns.
+
 Use the course's own terminology. For problem-solving exams, prioritize "what is the next step when I see this question?" over broad theory.
 
 ### 5. Add Solutions Carefully

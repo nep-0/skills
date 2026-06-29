@@ -81,6 +81,23 @@ This stage is complete when...
 
 Omit sections that do not apply, but keep `Goal`, `Method Template` or equivalent checklist, `Drills`, and `Completion Test`.
 
+## Formula Formatting
+
+Write all mathematical formulas in TeX syntax wrapped in MathJax delimiters:
+
+- Inline formulas: `$G(s) = \frac{1}{s + 2}$`
+- Displayed equations:
+
+```markdown
+$$
+K_p = \lim_{s \to 0} G(s)
+$$
+```
+
+Use dollar-sign delimiters in stage notes, method templates, drills, and solutions. Do not leave formulas as bare text such as `G(s) = 1/(s + 2)` unless the expression is intentionally plain code or a filename.
+
+Use `\lvert` and `\rvert` instead of raw `|` for absolute values, determinants, magnitudes, and vertical bars. This is required inside markdown tables because unescaped `|` characters are interpreted as column separators. For example, write `$\lvert G(j\omega) \rvert$`, not `$|G(j\omega)|$`.
+
 ## Solution Files
 
 Use one file per paper. Start with the paper/year title. Preserve original question labels.
