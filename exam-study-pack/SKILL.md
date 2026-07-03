@@ -46,7 +46,7 @@ Create a course-specific output folder, normally `<course>-exam-prep/`, with:
 - `solutions/README.md`
 - `solutions/<year>-solutions.md`
 - `assets/` for crops, extracted diagrams, and source-page images when useful
-- `scripts/` for repeatable build or extraction utilities
+- optional `scripts/` for repeatable extraction utilities
 - `dist/` for generated output only
 
 Keep generated artifacts in `dist/`. Keep source markdown and scripts editable and reviewable.
@@ -84,21 +84,26 @@ For each paper:
 
 When algebra depends on an unreadable diagram, give the correct method and verification points instead of inventing a final expression.
 
-### 6. Build A Portable Output
+### 6. Build A VitePress Site
 
-If the user wants a single printable file, use or adapt `scripts/build_study_pack_html.py`.
+When the user wants HTML output, create a VitePress site inside the pack.
 
-The script expects:
+Initialize VitePress with package-manager commands, not hand-edited dependency entries:
 
 ```bash
-python3 scripts/build_study_pack_html.py \
-  --root <pack-dir> \
-  --title "Course Exam Prep" \
-  --output <pack-dir>/dist/course-exam-prep.html \
-  <ordered markdown files...>
+npm add -D vitepress@next
+npm add -D markdown-it-mathjax3
 ```
 
-Run the builder after editing markdown. Open or inspect the generated HTML enough to catch broken links, missing images, escaped math problems, and print layout issues.
+Create `.vitepress/config.mts` and configure the site title, nav/sidebar entries for `PLAN.md`, staged notes, and solutions. Enable math formula rendering with `markdown: { math: true }` so inline `$...$` and display `$$...$$` formulas render. Add package scripts with the package manager, for example:
+
+```bash
+npm pkg set scripts.docs:dev="vitepress dev" \
+  scripts.docs:build="vitepress build" \
+  scripts.docs:preview="vitepress preview"
+```
+
+Run the VitePress build after editing markdown. Open or inspect the generated site enough to catch broken links, missing images, escaped math problems, and print layout issues.
 
 ## Quality Gates
 
@@ -112,4 +117,3 @@ Before finishing:
 ## Resource Notes
 
 - `references/pack-structure.md`: artifact pattern and authoring rules.
-- `scripts/build_study_pack_html.py`: reusable Markdown-to-HTML pack builder with image embedding, local markdown link rewriting, and MathJax support.

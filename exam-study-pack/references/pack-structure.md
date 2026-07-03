@@ -5,9 +5,9 @@
 Use this shape unless the existing project already has a close equivalent:
 
 ```text
-<course>-exam-prep/
+exam-prep/
 ├── PLAN.md
-├── steps/
+├── stages/
 │   ├── 00-start-here.md
 │   ├── 01-<foundation>.md
 │   ├── 02-<topic>.md
@@ -19,10 +19,11 @@ Use this shape unless the existing project already has a close equivalent:
 │   ├── question-crops/
 │   ├── source-pages/
 │   └── <reference-diagrams>.png
-├── scripts/
-│   └── build_study_pack_html.py
+├── .vitepress/
+│   └── config.mts
+├── package.json
 └── dist/
-    └── <generated>.html
+    └── <vitepress build output>
 ```
 
 ## PLAN.md
@@ -120,13 +121,16 @@ Render PDF pages or crop question images when:
 
 Store original rendered pages in `assets/source-pages/<paper>/` and question crops in `assets/question-crops/`. Use descriptive filenames such as `2025-q1-start.png` and `2025-q1-cont.png`.
 
-## HTML Build Rules
+## VitePress Site Rules
 
-When building one-file HTML:
+When building HTML output:
 
-- embed local images as data URIs
-- rewrite markdown links between included files to anchors
-- protect display math before Markdown conversion
+- install VitePress with `npm add -D vitepress@next`
+- install the VitePress math plugin dependency with `npm add -D markdown-it-mathjax3`
+- create `.vitepress/config.mts`
+- add `docs:dev`, `docs:build`, and `docs:preview` package scripts with `npm pkg set`
+- configure nav/sidebar entries for `PLAN.md`, `stages/`, and `solutions/`
+- enable VitePress markdown math support with `markdown: { math: true }` so `$...$` and `$$...$$` formulas render
+- keep local images as relative markdown image links
 - escape literal angle brackets in source text so inequalities do not become HTML tags
-- use MathJax for math rendering
 - make print styles avoid breaking images, tables, code blocks, and displayed math across pages
