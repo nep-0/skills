@@ -37,16 +37,17 @@ Write the pattern as a short plan before drafting detailed notes. Do not overfit
 
 ### 3. Create The Pack Structure
 
-Create a course-specific output folder, normally `<course>-exam-prep/`, with:
+Create a course-specific output folder, normally `exam-prep/`, with:
 
 - `PLAN.md`
-- `steps/00-start-here.md`
-- `steps/01-...md` through the topic stages
-- `steps/<final>-past-paper-mocks.md`
+- `stages/00-start-here.md`
+- `stages/01-...md` through the topic stages
+- `stages/<final>-past-paper-mocks.md`
 - `solutions/README.md`
 - `solutions/<year>-solutions.md`
 - `assets/` for crops, extracted diagrams, and source-page images when useful
 - optional `scripts/` for repeatable extraction utilities
+- `.gitignore` for dependency folders and generated output
 - `dist/` for generated output only
 
 Keep generated artifacts in `dist/`. Keep source markdown and scripts editable and reviewable.
@@ -95,7 +96,7 @@ npm add -D vitepress@next
 npm add -D markdown-it-mathjax3
 ```
 
-Create `.vitepress/config.mts` and configure the site title, nav/sidebar entries for `PLAN.md`, staged notes, and solutions. Enable math formula rendering with `markdown: { math: true }` so inline `$...$` and display `$$...$$` formulas render. Add package scripts with the package manager, for example:
+Create `.vitepress/config.mts` and configure the site title, nav/sidebar entries for `PLAN.md`, staged notes, and solutions. Enable math formula rendering with `markdown: { math: true }` so inline `$...$` and display `$$...$$` formulas render. Write a `.gitignore` that excludes `node_modules/`, generated VitePress cache, and build output such as `dist/`. Add package scripts with the package manager, for example:
 
 ```bash
 npm pkg set scripts.docs:dev="vitepress dev" \

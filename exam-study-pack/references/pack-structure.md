@@ -21,6 +21,7 @@ exam-prep/
 │   └── <reference-diagrams>.png
 ├── .vitepress/
 │   └── config.mts
+├── .gitignore
 ├── package.json
 └── dist/
     └── <vitepress build output>
@@ -128,6 +129,7 @@ When building HTML output:
 - install VitePress with `npm add -D vitepress@next`
 - install the VitePress math plugin dependency with `npm add -D markdown-it-mathjax3`
 - create `.vitepress/config.mts`
+- write `.gitignore` for `node_modules/`, VitePress cache, and `dist/`
 - add `docs:dev`, `docs:build`, and `docs:preview` package scripts with `npm pkg set`
 - configure nav/sidebar entries for `PLAN.md`, `stages/`, and `solutions/`
 - enable VitePress markdown math support with `markdown: { math: true }` so `$...$` and `$$...$$` formulas render
